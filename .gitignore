@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+propeller_analysis_output/
+*.zip
+.DS_Store
+Thumbs.db
