@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 venv/
 propeller_analysis_output/
+propeller_logs/
 *.zip
 .DS_Store
 Thumbs.db
