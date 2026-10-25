@@ -10,8 +10,8 @@ Python project for simulating propeller performance across RPM, pitch, and blade
 - Lift/drag approximation via angle-of-attack model
 - Tip-speed and tip-Mach computation
 - Two model modes:
-  - `simple_bemt` (implemented)
-  - `full_bemt` (placeholder currently falling back to simple model)
+  - `simple_bemt` (no induction; teaching / baseline)
+  - `full_bemt` (axial induction + Prandtl tip loss; still no \(a'\)/hub/Re polars)
 
 ### Dynamic State
 
@@ -87,9 +87,20 @@ python analyze_propeller.py
 
 4. Collect outputs from `propeller_analysis_output/`
 
+## V&V / AIAA artifacts
+
+```bash
+python -m vv.bench_bemt
+# or regenerate both repos + copy into paper folder:
+python scripts/regen_aiaa_artifacts.py
+```
+
+Outputs land in `vv/out/` (CSV error tables, summary JSON, plots). Assumptions: `docs/ASSUMPTIONS.md`.
+
 ## Known Limitations
 
-- `full_bemt` mode is scaffolded but not yet physically complete
+- `full_bemt` has axial induction + tip loss but not \(a'\), hub loss, or Re polars
 - Airfoil polar database integration is placeholder-only
-- Efficiency and induced flow treatment are approximate and intended for educational/research iteration
+- `simple_bemt` omits induction and overpredicts static thrust (see V&V)
+- GUI `efficiency` is not hover FoM or propulsive efficiency; use V&V FoM instead
 

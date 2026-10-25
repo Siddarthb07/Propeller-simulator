@@ -1,0 +1,79 @@
+{
+  "geometry": {
+    "radius_m": 0.15,
+    "blades": 2,
+    "chord_m": 0.025,
+    "rho": 1.225,
+    "pitch_deg": 12.0,
+    "advance_ratio": 0.0
+  },
+  "n_points": 13,
+  "endpoint_thrust_N": {
+    "rpm_min": 2000,
+    "simple": 2.0169464317007133,
+    "full": 0.18561809100942778,
+    "ref": 0.18561809100942778,
+    "uniform": 0.9802178310878975,
+    "rpm_max": 8000,
+    "simple_max": 32.27114290721141,
+    "full_max": 2.96989245788201,
+    "ref_max": 2.96989245788201,
+    "uniform_max": 15.68348529740636
+  },
+  "endpoint_power_W": {
+    "simple_min": 0.3531181513055037,
+    "full_min": 0.7354061735227109,
+    "uniform_min": 2.643082175690243,
+    "simple_max": 22.59956168355224,
+    "full_max": 47.0660299252177,
+    "uniform_max": 169.15725924417555
+  },
+  "simple_vs_ref": {
+    "thrust_rmse_N": 15.672808551814398,
+    "thrust_mean_abs_pct_err": 986.6101484647243,
+    "mean_thrust_ratio": 10.866101484647244,
+    "thrust_ratio_span_across_rpm": 1.0982599153663841e-05,
+    "power_rmse_W": 11.38894418246205,
+    "power_mean_abs_pct_err": 51.98327368394072
+  },
+  "full_vs_ref_identity": {
+    "thrust_rmse_N": 0.0,
+    "mean_thrust_ratio": 1.0,
+    "note": "Shared kernel \u2014 integration/identity check only"
+  },
+  "full_vs_independent_uniform_inflow": {
+    "thrust_rmse_N": 6.800314167964347,
+    "thrust_mean_abs_pct_err": 81.06357428263324,
+    "mean_thrust_ratio": 0.18936425717366753,
+    "note": "Independent code path (uniform v_i + momentum closure; no tip loss)"
+  },
+  "structural_T_propto_n2_check": {
+    "quadratic_k_T_per_rpm2": 5.042366079251783e-07,
+    "thrust_rmse_vs_quadratic_fit_N": 3.4945920547185765e-15,
+    "note": "Self-consistency of simple_bemt form, not external validation"
+  },
+  "CT_static_mean": {
+    "simple": 0.1829429870023323,
+    "full": 0.01683611985962297,
+    "ref": 0.01683611985962297,
+    "uniform_inflow": 0.08890864681069365,
+    "literature_band_lo": 0.015,
+    "literature_band_hi": 0.15,
+    "literature_band_note": "UIUC-style small-prop static CT0 span incl. poor/low-Re cases (~0.015\u20130.15); not a matched catalog prop",
+    "ref_inside_band": true,
+    "full_inside_band": true,
+    "uniform_inside_band": true,
+    "simple_inside_band": false
+  },
+  "mean_hover_fom_ref": 0.26130888586617046,
+  "mean_hover_fom_full": 0.26130888586617046,
+  "assumptions": [
+    "simple_bemt: no iterative induced velocity (baseline / teaching path)",
+    "full_bemt: axial induction + Prandtl tip loss; no a', hub loss, or Re polars",
+    "full vs harness ref is an identity/wiring check (shared kernel)",
+    "full vs uniform-inflow is an independent physics cross-check (different algorithm)",
+    "UAV-scale static envelope (J=0); not flight-test validated",
+    "CT band 0.015\u20130.15 spans UIUC-reported small-prop static CT0 including poor performers",
+    "GUI 'efficiency' metric is not FoM or propulsive efficiency"
+  ]
+}
